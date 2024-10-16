@@ -198,11 +198,9 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-  return (
-    `┌${'─'.repeat(width - 2)}┐\n` +
-    `│${' '.repeat(width - 2)}│\n`.repeat(height - 2) +
-    `└${'─'.repeat(width - 2)}┘\n`
-  );
+  return `┌${'─'.repeat(width - 2)}┐\n${`│${' '.repeat(width - 2)}│\n`.repeat(
+    height - 2,
+  )}└${'─'.repeat(width - 2)}┘\n`;
 }
 
 /**
@@ -223,12 +221,12 @@ function getRectangleString(width, height) {
  */
 function encodeToRot13(str) {
   let newStr = '';
-  let abc = 'abcdefghijklmnopqrstuvwxyz';
+  const abc = 'abcdefghijklmnopqrstuvwxyz';
   for (let i = 0; i < str.length; i++) {
     if (!abc.includes(str[i].toLowerCase())) {
       newStr += str[i];
     } else {
-      let decoderInd = (abc.indexOf(str[i].toLowerCase()) + 13) % abc.length;
+      const decoderInd = (abc.indexOf(str[i].toLowerCase()) + 13) % abc.length;
       str[i].toUpperCase() === str[i]
         ? (newStr += abc[decoderInd].toUpperCase())
         : (newStr += abc[decoderInd]);
@@ -253,13 +251,11 @@ function encodeToRot13(str) {
 function isString(value) {
   if (typeof value === 'string' && value) {
     return true;
-  } else if (value === null) {
-    return false;
-  } else {
-    return typeof value === 'object' && typeof value[0] === 'string'
-      ? true
-      : false;
   }
+  if (value === null) {
+    return false;
+  }
+  return !!(typeof value === 'object' && typeof value[0] === 'string');
 }
 
 /**
