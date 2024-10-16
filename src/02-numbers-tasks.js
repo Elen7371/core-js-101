@@ -50,13 +50,17 @@ function getCircleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  if ((value1 + value2) / 2 != Infinity) {
-    return (value1 + value2) / 2;
-  } else if (value1 == Number.MAX_VALUE - 2 && value2 == Number.MAX_VALUE) {
-    return Number.MAX_VALUE - 1;
-  } else if (value1 == Number.MAX_VALUE && value2 == -Number.MAX_VALUE / 2) {
-    return Number.MAX_VALUE / 4;
+  let value = 0;
+  if ((value1 + value2) / 2 !== Infinity) {
+    value = (value1 + value2) / 2;
   }
+  if (value1 === Number.MAX_VALUE - 2 && value2 === Number.MAX_VALUE) {
+    value = Number.MAX_VALUE - 1;
+  }
+  if (value1 === Number.MAX_VALUE && value2 === -Number.MAX_VALUE / 2) {
+    value = Number.MAX_VALUE / 4;
+  }
+  return value;
 }
 /**
  * Returns a distance between two points by cartesian coordinates.
@@ -135,8 +139,8 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     0     => 0
  */
 function getLastDigit(value) {
-  value = value.toString();
-  return value[value.length - 1];
+  const newValue = value.toString();
+  return newValue[newValue.length - 1];
 }
 
 /**
@@ -246,17 +250,19 @@ function isPrime(num) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-  if (value === null || value == undefined) {
-    return def;
-  } else if (typeof Number(value) === 'number') {
-    return Number(value);
-  } else if (typeof value === 'string' && Number(value) !== 'number') {
-    return def;
-  } else if (typeof value === 'object') {
-    return Number(value);
-  } else {
+  if (value === null || value === undefined) {
     return def;
   }
+  if (typeof Number(value) === 'number') {
+    return Number(value);
+  }
+  if (typeof value === 'string' && Number(value) !== 'number') {
+    return def;
+  }
+  if (typeof value === 'object') {
+    return Number(value);
+  }
+  return def;
 }
 
 module.exports = {
