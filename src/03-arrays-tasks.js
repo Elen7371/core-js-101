@@ -87,12 +87,7 @@ function getArrayOfPositives(arr) {
 function getArrayOfStrings(arr) {
   const newArr = [];
 
-  arr.forEach((el) => {
-    if (typeof el === 'string') {
-      newArr.push(el);
-    }
-  });
-
+  arr.map((el) => (typeof el === 'string' ? newArr.push(el) : el));
   return newArr;
 }
 
@@ -112,11 +107,7 @@ function getArrayOfStrings(arr) {
 function removeFalsyValues(arr) {
   const newArr = [];
 
-  arr.forEach((el) => {
-    if (el) {
-      newArr.push(el);
-    }
-  });
+  arr.map((el) => (el ? newArr.push(el) : el));
 
   return newArr;
 }
@@ -215,12 +206,7 @@ function getTail(arr, n) {
  */
 
 function toCsvText(arr) {
-  let strArr = '';
-
-  arr.forEach((el) => {
-    strArr += `${el.join(',')}\n`;
-  });
-
+  const strArr = arr.reduce((acc, el) => `${acc}${el.join(',')}\n`, '');
   return strArr.slice(0, strArr.length - 1);
 }
 
@@ -253,8 +239,14 @@ function toArrayOfSquares(arr) {
  *   [ 0, 0, 0, 0, 0]         => [ 0, 0, 0, 0, 0]
  *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
  */
-function getMovingSum(/* arr */) {
-  throw new Error('Not implemented');
+function getMovingSum(arr) {
+  const newArr = [];
+  arr.reduce((acc, curr) => {
+    newArr.push(acc + curr);
+    return acc + curr;
+  }, 0);
+
+  return newArr;
 }
 
 /**
@@ -268,8 +260,10 @@ function getMovingSum(/* arr */) {
  * [ 'a', 'b', 'c' , null ]  => [ "b", null ]
  * [ "a" ] => []
  */
-function getSecondItems(/* arr */) {
-  throw new Error('Not implemented');
+function getSecondItems(arr) {
+  const newArr = [];
+  arr.map((el, i) => (i % 2 !== 0 ? newArr.push(el) : el));
+  return newArr;
 }
 
 /**

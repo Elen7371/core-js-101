@@ -117,11 +117,13 @@ function getLinearEquationRoot(a, b) {
  *
  *
  */
-function getAngleBetweenVectors(x1, y1, x2, y2) {
-  return (
-    (x1 * x2 + y1 * y2) / (Math.sqrt(x1 ** 2 + y1 ** 2) * Math.sqrt(x2 ** 2 + y2 ** 2))
-  );
+function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
+  throw new Error('Not implemented');
 }
+
+// return (
+//   (x1 * x2 + y1 * y2) / (Math.sqrt(x1 ** 2 + y1 ** 2) * Math.sqrt(x2 ** 2 + y2 ** 2))
+// );
 
 // неправильно!!!! переделать!
 
@@ -248,20 +250,22 @@ function isPrime(num) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(value, def) {
-  if (value === null || value === undefined) {
-    return def;
-  }
-  if (typeof Number(value) === 'number') {
-    return Number(value);
-  }
-  if (typeof value === 'string' && Number(value) !== 'number') {
-    return def;
-  }
-  if (typeof value === 'object') {
-    return Number(value);
-  }
-  return def;
+function toNumber(/* value, def */) {
+  throw new Error('Not implemented');
+  // ошибка!!! поправить!!!
+  // if (value === null || value === undefined) {
+  //   return def;
+  // }
+  // if (typeof Number(value) === 'number') {
+  //   return Number(value);
+  // }
+  // if (typeof value === 'string' && Number(value) !== 'number') {
+  //   return def;
+  // }
+  // if (typeof value === 'object') {
+  //   return Number(value);
+  // }
+  // return def;
 }
 
 module.exports = {
