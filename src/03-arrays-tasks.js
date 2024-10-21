@@ -280,9 +280,23 @@ function getSecondItems(arr) {
  *  [ 'a', 'b', 'c', null ] => [ 'a', 'b','b', 'c','c','c',  null,null,null,null ]
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
-function propagateItemsByPositionIndex(/* arr */) {
-  throw new Error('Not implemented');
+function propagateItemsByPositionIndex(arr) {
+  const newArr = [];
+  // arr.map((el, ind) => {
+  //   newArr += (`${el},`).repeat(ind + 1);
+  //   return el;
+  // });
+  // return newArr.split(',').filter((el) => el !== '');
+
+  arr.map((el, ind) => newArr.push(`${el},`.repeat(ind + 1).split(',')));
+
+  return newArr
+    .flat()
+    .filter((el) => el !== '')
+    .map((el) => (el === 'null' ? null : el));
 }
+
+// ПЕРЕРЕШАТЬ! решение косое говно
 
 /**
  * Returns the 3 largest numbers from the specified array
@@ -314,8 +328,8 @@ function get3TopItems(/* arr */) {
  *   [ null, 1, 'elephant' ] => 1
  *   [ 1, '2' ] => 1
  */
-function getPositivesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getPositivesCount(arr) {
+  return arr.filter((el) => el > 0 && typeof el !== 'string').length;
 }
 
 /**
