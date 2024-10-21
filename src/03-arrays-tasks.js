@@ -345,8 +345,27 @@ function getPositivesCount(arr) {
  *   [ 'nine','eight','nine','eight'] => [ 'eight','eight','nine','nine']
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
-function sortDigitNamesByNumericOrder(/* arr */) {
-  throw new Error('Not implemented');
+function sortDigitNamesByNumericOrder(arr) {
+  const listNum = [
+    'zero',
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
+  ];
+
+  let newArr = [];
+
+  arr.map((el) => (listNum.includes(el) ? newArr.push(listNum.indexOf(el)) : el));
+
+  newArr = newArr.sort((a, b) => a - b);
+
+  return newArr.map((el) => listNum[el]);
 }
 
 /**
@@ -361,8 +380,8 @@ function sortDigitNamesByNumericOrder(/* arr */) {
  *   [ -1, 1, -1, 1 ]      => 0
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
-function getItemsSum(/* arr */) {
-  throw new Error('Not implemented');
+function getItemsSum(arr) {
+  return arr.reduce((sum, el) => sum + el, 0);
 }
 
 /**
@@ -377,8 +396,8 @@ function getItemsSum(/* arr */) {
  *  [ -1, 'false', null, 0 ] => 2
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
-function getFalsyValuesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getFalsyValuesCount(arr) {
+  return arr.filter((el) => !el).length;
 }
 
 /**
@@ -410,8 +429,8 @@ function findAllOccurrences(arr, item) {
  *    [1, 2, 3, 4, 5]                   => '1,2,3,4,5'
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
-function toStringList(/* arr */) {
-  throw new Error('Not implemented');
+function toStringList(arr) {
+  return arr.join(',');
 }
 
 /**
@@ -442,7 +461,21 @@ function toStringList(/* arr */) {
  */
 function sortCitiesArray(/* arr */) {
   throw new Error('Not implemented');
+
+  // const keyCountry = 'country';
+  // const keyCity = 'city';
+
+  // const newArr = arr.sort((country1,
+  // country2) => (country1[keyCountry] > country2[keyCountry] ? 1 : -1));
+
+  // return newArr.sort((city1, city2) => (city1[keyCountry] === city2[keyCountry]
+  //   ? city1[keyCity] > city2[keyCity]
+  //     ? 1
+  //     : -1
+  //   : 1));
 }
+
+// / НЕЛЬЗЯ ТРОИЧНЫЕ ТЕРНАРНЫЕ! ПЕРЕДЕЛАТЬ!
 
 /**
  * Creates an identity matrix of the specified size
