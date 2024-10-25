@@ -166,8 +166,8 @@ function doRectanglesOverlap(/* rect1, rect2 */) {
  */
 function isInsideCircle(circle, point) {
   return (
-    (point.x - circle.center.x) ** 2 + (point.y - circle.center.y) ** 2 <
-    circle.radius ** 2
+    (point.x - circle.center.x) ** 2 + (point.y - circle.center.y) ** 2
+    < circle.radius ** 2
   );
 }
 
@@ -186,7 +186,7 @@ function findFirstSingleChar(str) {
   const newArr = str.split('');
 
   const findEl = newArr.find(
-    (el) => newArr.indexOf(el) === newArr.lastIndexOf(el)
+    (el) => newArr.indexOf(el) === newArr.lastIndexOf(el),
   );
 
   return findEl || null;
