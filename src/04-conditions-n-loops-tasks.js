@@ -166,8 +166,8 @@ function doRectanglesOverlap(/* rect1, rect2 */) {
  */
 function isInsideCircle(circle, point) {
   return (
-    (point.x - circle.center.x) ** 2 + (point.y - circle.center.y) ** 2
-    < circle.radius ** 2
+    (point.x - circle.center.x) ** 2 + (point.y - circle.center.y) ** 2 <
+    circle.radius ** 2
   );
 }
 
@@ -186,7 +186,7 @@ function findFirstSingleChar(str) {
   const newArr = str.split('');
 
   const findEl = newArr.find(
-    (el) => newArr.indexOf(el) === newArr.lastIndexOf(el),
+    (el) => newArr.indexOf(el) === newArr.lastIndexOf(el)
   );
 
   return findEl || null;
@@ -214,8 +214,13 @@ function findFirstSingleChar(str) {
  *   5, 3, true, true   => '[3, 5]'
  *
  */
-function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
-  throw new Error('Not implemented');
+function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
+  let str = a < b ? `${a}, ${b}` : `${b}, ${a}`;
+
+  str = isStartIncluded ? `[${str}` : `(${str}`;
+
+  str += isEndIncluded ? ']' : ')';
+  return str;
 }
 
 /**
@@ -230,8 +235,8 @@ function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
  * 'rotator' => 'rotator'
  * 'noon' => 'noon'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  return str.split('').reverse().join('');
 }
 
 /**
@@ -243,11 +248,11 @@ function reverseString(/* str */) {
  * @example:
  *   12345 => 54321
  *   1111  => 1111
- *   87354 => 45378
+ *   v => 45378
  *   34143 => 34143
  */
-function reverseInteger(/* num */) {
-  throw new Error('Not implemented');
+function reverseInteger(num) {
+  return num.toString().split('').reverse().join('');
 }
 
 /**
@@ -270,8 +275,23 @@ function reverseInteger(/* num */) {
  *   5436468789016589 => false
  *   4916123456789012 => false
  */
-function isCreditCardNumber(/* ccn */) {
+function isCreditCardNumber(/*ccn*/) {
   throw new Error('Not implemented');
+
+  // return (
+  //   ccn
+  //     .toString()
+  //     .split('')
+  //     .map((el) => el * 1)
+  //     .reduce((acc, el, ind) => {
+  //       if (ind % 2 !== 0) {
+  //         return el + acc;
+  //       }
+  //       return el * 2 > 9 ? acc + (el * 2 - 9) : acc + el * 2;
+  //     })
+  //     % 10
+  //   === 0
+  // );
 }
 
 /**
